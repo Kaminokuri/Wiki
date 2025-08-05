@@ -1,22 +1,646 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>SysAdmin Wiki - Documentation Technique</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="Wiki technique pour l'administration système, la cybersécurité et l'infrastructure IT">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="author" content="Mathéo Fauvel">
+  
+  <!-- Docsify Theme Base -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
+  <!-- Custom Terminal Theme -->
+  <style>
+    /* Terminal-inspired design system */
+    :root {
+      --bg-primary: #0a0e27;
+      --bg-secondary: #151a33;
+      --bg-tertiary: #1e2442;
+      --text-primary: #e0e6ed;
+      --text-secondary: #a8b2d1;
+      --text-muted: #64748b;
+      --accent-cyan: #00d9ff;
+      --accent-green: #50fa7b;
+      --accent-yellow: #f1fa8c;
+      --accent-red: #ff5555;
+      --accent-purple: #bd93f9;
+      --border-color: #2d3548;
+      --code-bg: #0d1117;
+      --font-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      
+      /* Override Docsify theme variables */
+      --theme-color: #00d9ff;
+      --base-font-family: var(--font-sans);
+      --base-font-size: 16px;
+      --base-line-height: 1.6;
+      --sidebar-width: 280px;
+      --sidebar-background: var(--bg-secondary);
+      --sidebar-border-color: var(--border-color);
+    }
+
+    /* Base overrides */
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    /* Main container */
+    .app-name-link {
+      color: var(--accent-cyan) !important;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .app-name-link::before {
+      content: '>';
+      animation: blink 1.5s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+      background-color: var(--bg-secondary) !important;
+      border-right: 1px solid var(--border-color) !important;
+      color: var(--text-secondary);
+      padding-top: 0;
+    }
+
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        var(--accent-cyan) 0%, 
+        var(--accent-purple) 50%, 
+        var(--accent-green) 100%);
+      animation: gradient-shift 10s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    .sidebar ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin: 0;
+      position: relative;
+    }
+
+    .sidebar li.level-1 > p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin: 1.5rem 0 0.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar li.level-1 > p::before {
+      content: '//';
+      color: var(--accent-cyan);
+      opacity: 0.5;
+    }
+
+    .sidebar ul li a {
+      color: var(--text-secondary) !important;
+      font-size: 0.875rem;
+      padding: 0.625rem 1.5rem !important;
+      display: block;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      position: relative;
+      border-right: 3px solid transparent;
+    }
+
+    .sidebar ul li a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent-cyan);
+      transform: translateX(-100%);
+      transition: transform 0.2s ease;
+    }
+
+    .sidebar ul li a:hover {
+      color: var(--text-primary) !important;
+      background: rgba(0, 217, 255, 0.05);
+    }
+
+    .sidebar ul li a:hover::before {
+      transform: translateX(0);
+    }
+
+    .sidebar ul li.active > a {
+      color: var(--accent-cyan) !important;
+      background: rgba(0, 217, 255, 0.1);
+      border-right-color: var(--accent-cyan);
+    }
+
+    .sidebar ul li.active > a::before {
+      transform: translateX(0);
+    }
+
+    /* Search box */
+    .search input {
+      background: var(--bg-primary) !important;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-primary) !important;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .search input:focus {
+      border-color: var(--accent-cyan) !important;
+      box-shadow: 0 0 0 1px var(--accent-cyan), 0 0 20px rgba(0, 217, 255, 0.2) !important;
+    }
+
+    .search input::placeholder {
+      color: var(--text-muted) !important;
+    }
+
+    .search .matching-post {
+      border-bottom: 1px solid var(--border-color) !important;
+      padding: 0.75rem 1rem !important;
+    }
+
+    .search .matching-post:hover {
+      background: rgba(0, 217, 255, 0.05);
+    }
+
+    /* Main content area */
+    main {
+      background: var(--bg-primary);
+      padding: 0 !important;
+    }
+
+    .markdown-section {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      max-width: 1200px;
+      padding: 2rem 3rem !important;
+    }
+
+    /* Headers */
+    .markdown-section h1 {
+      color: var(--text-primary) !important;
+      font-size: 2rem !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem !important;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .markdown-section h1::before {
+      content: '#';
+      color: var(--accent-cyan);
+      opacity: 0.5;
+      font-family: var(--font-mono);
+    }
+
+    .markdown-section h2 {
+      color: var(--text-primary) !important;
+      font-size: 1.5rem !important;
+      margin: 2rem 0 1rem !important;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .markdown-section h2::before {
+      content: '##';
+      color: var(--accent-purple);
+      opacity: 0.5;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+    }
+
+    .markdown-section h3 {
+      color: var(--text-primary) !important;
+      font-size: 1.25rem !important;
+      margin: 1.5rem 0 0.75rem !important;
+    }
+
+    .markdown-section h3::before {
+      content: '### ';
+      color: var(--accent-green);
+      opacity: 0.5;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+    }
+
+    /* Paragraphs and text */
+    .markdown-section p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    /* Links */
+    .markdown-section a {
+      color: var(--accent-cyan) !important;
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent-cyan);
+      transition: all 0.2s ease;
+    }
+
+    .markdown-section a:hover {
+      border-bottom-style: solid;
+      opacity: 0.8;
+    }
+
+    /* Code blocks */
+    .markdown-section pre {
+      background: var(--code-bg) !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 4px;
+      padding: 1rem !important;
+      position: relative;
+      margin: 1.5rem 0 !important;
+    }
+
+    .markdown-section pre::before {
+      content: 'TERMINAL';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      background: var(--bg-tertiary);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.625rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      border-bottom-right-radius: 4px;
+    }
+
+    .markdown-section code {
+      font-family: var(--font-mono) !important;
+      font-size: 0.875rem !important;
+      color: var(--accent-green) !important;
+      background: var(--bg-tertiary) !important;
+      padding: 0.125rem 0.375rem !important;
+      border-radius: 2px;
+    }
+
+    .markdown-section pre code {
+      background: none !important;
+      padding: 0 !important;
+      color: var(--text-primary) !important;
+    }
+
+    /* Tables */
+    .markdown-section table {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color) !important;
+      border-radius: 4px;
+      overflow: hidden;
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+
+    .markdown-section th {
+      background: var(--bg-tertiary) !important;
+      color: var(--accent-cyan) !important;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      padding: 0.75rem !important;
+      border: 1px solid var(--border-color) !important;
+      text-align: left;
+    }
+
+    .markdown-section td {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      padding: 0.75rem !important;
+      border: 1px solid var(--border-color) !important;
+    }
+
+    .markdown-section tr:hover td {
+      background: rgba(0, 217, 255, 0.05);
+    }
+
+    /* Lists */
+    .markdown-section ul, .markdown-section ol {
+      color: var(--text-secondary);
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .markdown-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .markdown-section li::marker {
+      color: var(--accent-cyan);
+    }
+
+    /* Blockquotes */
+    .markdown-section blockquote {
+      background: var(--bg-secondary) !important;
+      border-left: 3px solid var(--accent-cyan) !important;
+      border-radius: 0 4px 4px 0;
+      color: var(--text-secondary) !important;
+      padding: 1rem !important;
+      margin: 1.5rem 0 !important;
+    }
+
+    .markdown-section blockquote p {
+      margin: 0;
+    }
+
+    /* Alerts styling */
+    .markdown-section .warn {
+      background: rgba(241, 250, 140, 0.1) !important;
+      border-left-color: var(--accent-yellow) !important;
+    }
+
+    .markdown-section .danger {
+      background: rgba(255, 85, 85, 0.1) !important;
+      border-left-color: var(--accent-red) !important;
+    }
+
+    .markdown-section .tip {
+      background: rgba(80, 250, 123, 0.1) !important;
+      border-left-color: var(--accent-green) !important;
+    }
+
+    /* Cover page */
+    .cover {
+      background: var(--bg-primary) !important;
+      color: var(--text-primary);
+    }
+
+    .cover-main h1 {
+      color: var(--accent-cyan) !important;
+      font-family: var(--font-mono);
+    }
+
+    .cover-main blockquote {
+      color: var(--text-secondary) !important;
+    }
+
+    .cover-main > p:last-child a {
+      color: var(--accent-cyan) !important;
+      border: 1px solid var(--accent-cyan) !important;
+      border-radius: 4px;
+      padding: 0.75rem 2rem !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease;
+      display: inline-block;
+      margin: 0.5rem;
+    }
+
+    .cover-main > p:last-child a:hover {
+      background: var(--accent-cyan);
+      color: var(--bg-primary) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3);
+    }
+
+    /* Navbar */
+    .app-nav {
+      color: var(--text-secondary);
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 1rem 2rem;
+      z-index: 10;
+    }
+
+    .app-nav a {
+      color: var(--text-secondary) !important;
+      margin: 0 1rem;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .app-nav a:hover {
+      color: var(--accent-cyan) !important;
+    }
+
+    /* Progress bar */
+    .progress {
+      background: var(--accent-cyan) !important;
+      height: 2px !important;
+    }
+
+    /* Mobile sidebar toggle */
+    .sidebar-toggle {
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      width: auto;
+      padding: 10px 15px;
+    }
+
+    .sidebar-toggle span {
+      background: var(--accent-cyan);
+    }
+
+    /* Copy code button */
+    .docsify-copy-code-button {
+      background: var(--bg-tertiary) !important;
+      color: var(--text-muted) !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 2px !important;
+      font-size: 0.75rem !important;
+      padding: 0.25rem 0.5rem !important;
+      transition: all 0.2s ease;
+    }
+
+    .docsify-copy-code-button:hover {
+      background: var(--accent-cyan) !important;
+      color: var(--bg-primary) !important;
+      border-color: var(--accent-cyan) !important;
+    }
+
+    .docsify-copy-code-button.success {
+      background: var(--accent-green) !important;
+      color: var(--bg-primary) !important;
+      border-color: var(--accent-green) !important;
+    }
+
+    /* Pagination */
+    .pagination-item-label {
+      color: var(--text-muted) !important;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pagination-item-title {
+      color: var(--accent-cyan) !important;
+      font-size: 1rem;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-cyan);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .markdown-section {
+        padding: 1rem !important;
+      }
+
+      .sidebar {
+        padding-top: 0;
+      }
+
+      .markdown-section h1 {
+        font-size: 1.5rem !important;
+      }
+
+      .markdown-section h2 {
+        font-size: 1.25rem !important;
+      }
+    }
+
+    /* Loading animation */
+    .app-name-link:empty::after {
+      content: 'Loading...';
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+    }
+
+    /* Font import */
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+  </style>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">Chargement...</div>
+  
   <script>
     window.$docsify = {
-      name: '',
-      repo: ''
+      name: 'SysAdmin Wiki',
+      repo: '', // Ajoutez votre repo GitHub ici
+      
+      // Configuration de base
+      loadSidebar: true,
+      loadNavbar: true,
+      coverpage: true,
+      onlyCover: false,
+      
+      // Configuration du thème
+      themeColor: '#00d9ff',
+      
+      // Recherche
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Rechercher...',
+        noData: 'Aucun résultat',
+        depth: 3,
+      },
+      
+      // Format des dates
+      formatUpdated: '{DD}/{MM}/{YYYY} {HH}:{mm}',
+      
+      // Plugins recommandés
+      copyCode: {
+        buttonText: 'Copier',
+        errorText: 'Erreur',
+        successText: 'Copié!'
+      },
+      
+      // Pagination
+      pagination: {
+        previousText: '← Précédent',
+        nextText: 'Suivant →',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+      
+      // Configuration markdown
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === 'bash' || lang === 'shell') {
+              lang = 'bash';
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      },
+      
+      // Auto scroll to top
+      auto2top: true,
+      
+      // Configuration pour GitHub Pages
+      basePath: '',  // Ajustez selon votre configuration GitHub Pages
+      
+      // Sous-niveau maximum pour la sidebar
+      subMaxLevel: 3,
+      
+      // Configuration mobile
+      mergeNavbar: true,
     }
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  
+  <!-- Docsify Core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  
+  <!-- Plugins recommandés -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+  
+  <!-- Syntax highlighting -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-powershell.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
+  
+  <!-- Emojis support -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
+  
+  <!-- External script execution -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/external-script.min.js"></script>
 </body>
 </html>
