@@ -166,6 +166,68 @@
       transform: translateX(0);
     }
 
+    /* Collapsible sidebar sections */
+    .sidebar-nav > ul > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-nav-title {
+      display: flex;
+      align-items: center;
+      padding: 0.625rem 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .sidebar-nav-title:hover {
+      background: rgba(0, 217, 255, 0.05);
+      color: var(--accent-cyan);
+    }
+
+    .sidebar-nav-title::after {
+      content: '▼';
+      position: absolute;
+      right: 1.5rem;
+      font-size: 0.625rem;
+      color: var(--accent-cyan);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar-nav-title.collapsed::after {
+      transform: rotate(-90deg);
+    }
+
+    /* Hide submenu by default */
+    .sidebar-nav > ul > li > ul {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+      opacity: 0;
+      padding-left: 0;
+    }
+
+    /* Show submenu when expanded */
+    .sidebar-nav > ul > li.expanded > ul {
+      max-height: 500px;
+      opacity: 1;
+      transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+    }
+
+    /* Indent sub-items */
+    .sidebar-nav > ul > li > ul a {
+      padding-left: 2.5rem !important;
+      font-size: 0.825rem;
+    }
+
+    /* Sub-item hover effect */
+    .sidebar-nav > ul > li > ul a::before {
+      left: 1rem;
+    }
+
     /* Search box */
     .search input {
       background: var(--bg-primary) !important;
@@ -723,6 +785,90 @@
       
       // Configuration mobile
       mergeNavbar: true,
+      
+      // Plugin pour menu déroulant
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            // Initialiser les menus déroulants après chaque chargement de page
+            initCollapsibleMenu();
+          });
+        }
+      ]
+    }
+    
+    // Fonction pour initialiser le menu déroulant
+    function initCollapsibleMenu() {
+      const sidebar = document.querySelector('.sidebar-nav');
+      if (!sidebar) return;
+      
+      // Trouver tous les titres de sections
+      const sectionTitles = sidebar.querySelectorAll('.sidebar-nav-title');
+      
+      sectionTitles.forEach(title => {
+        // Trouver le parent li et vérifier s'il a des sous-éléments
+        const parentLi = title.closest('li');
+        if (!parentLi) return;
+        
+        const subMenu = parentLi.querySelector('ul');
+        if (!subMenu) return;
+        
+        // Restaurer l'état depuis localStorage
+        const sectionId = title.textContent.trim();
+        const isExpanded = localStorage.getItem(`sidebar-${sectionId}`) === 'true';
+        
+        if (isExpanded) {
+          parentLi.classList.add('expanded');
+          title.classList.remove('collapsed');
+        } else {
+          parentLi.classList.remove('expanded');
+          title.classList.add('collapsed');
+        }
+        
+        // Ajouter l'événement click
+        title.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const isCurrentlyExpanded = parentLi.classList.contains('expanded');
+          
+          // Option: Fermer tous les autres menus (décommenter si souhaité)
+          /*
+          sectionTitles.forEach(otherTitle => {
+            const otherLi = otherTitle.closest('li');
+            if (otherLi && otherLi !== parentLi) {
+              otherLi.classList.remove('expanded');
+              otherTitle.classList.add('collapsed');
+              const otherId = otherTitle.textContent.trim();
+              localStorage.setItem(`sidebar-${otherId}`, 'false');
+            }
+          });
+          */
+          
+          // Toggle le menu actuel
+          if (isCurrentlyExpanded) {
+            parentLi.classList.remove('expanded');
+            title.classList.add('collapsed');
+            localStorage.setItem(`sidebar-${sectionId}`, 'false');
+          } else {
+            parentLi.classList.add('expanded');
+            title.classList.remove('collapsed');
+            localStorage.setItem(`sidebar-${sectionId}`, 'true');
+          }
+        });
+      });
+      
+      // Gérer les clics sur les liens pour maintenir l'état
+      const sidebarLinks = sidebar.querySelectorAll('a');
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Garder le menu parent ouvert quand on clique sur un lien
+          const parentLi = this.closest('.sidebar-nav > ul > li');
+          if (parentLi && parentLi.querySelector('.sidebar-nav-title')) {
+            e.stopPropagation();
+          }
+        });
+      });
     }
   </script>
   
