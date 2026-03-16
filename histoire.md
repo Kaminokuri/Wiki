@@ -1,8 +1,8 @@
 ---
-title: Histoire
+title: Histoire de l'informatique
 description: 
 published: true
-date: 2026-03-16T14:36:54.203Z
+date: 2026-03-16T14:37:31.577Z
 tags: histoire
 editor: markdown
 dateCreated: 2026-03-12T20:14:13.367Z
