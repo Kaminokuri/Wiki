@@ -2,8 +2,8 @@
 title: DevOps
 description: 
 published: true
-date: 2026-03-16T13:27:51.389Z
-tags: devops
+date: 2026-03-16T13:29:32.792Z
+tags: devops, infrastructure-as-code
 editor: markdown
 dateCreated: 2026-03-16T08:06:06.213Z
 ---
