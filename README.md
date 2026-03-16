@@ -1,5 +1,9 @@
 # Wiki
 
+[![Wiki en ligne](https://img.shields.io/badge/Wiki-En%20ligne-2ea44f?style=for-the-badge)](https://wiki.matheo-fauvel.fr)
+
+➡️ **Accéder au wiki :** [wiki.matheo-fauvel.fr](https://wiki.matheo-fauvel.fr)
+
 Dépôt GitHub de sauvegarde, de versionnement et de partage du contenu de mon wiki personnel propulsé par **Wiki.js**.
 
 ## À propos
@@ -12,12 +16,6 @@ Il sert principalement à :
 - sauvegarder le contenu du wiki ;
 - partager la base de connaissances ;
 - faciliter l’évolution de la documentation dans le temps.
-
-## Site du wiki
-
-Le wiki est consultable en ligne à cette adresse :
-
-**https://wiki.matheo-fauvel.fr**
 
 ## Fonctionnement
 
@@ -94,4 +92,4 @@ Sauf mention contraire, le contenu de ce dépôt reste réservé à son auteur.
 
 **Auteur :** Mathéo Fauvel
 **GitHub :** [Kaminokuri](https://github.com/Kaminokuri)
-**Site du wiki :** [https://wiki.matheo-fauvel.fr](https://wiki.matheo-fauvel.fr)
+**Site du wiki :** [wiki.matheo-fauvel.fr](https://wiki.matheo-fauvel.fr)
