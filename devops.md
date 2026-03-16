@@ -2,7 +2,7 @@
 title: DevOps
 description: 
 published: true
-date: 2026-03-16T13:29:32.792Z
+date: 2026-03-16T13:34:58.473Z
 tags: devops, infrastructure-as-code
 editor: markdown
 dateCreated: 2026-03-16T08:06:06.213Z
@@ -44,7 +44,7 @@ Dans cette partie, vous allez découvrir :
 
 ## Organisation de la section
 
-### [Histoire](./histoire/index.md)
+### [Histoire](./devops/histoire)
 
 Cette partie retrace la naissance du DevOps et son évolution depuis les anciens modèles d’exploitation jusqu’aux approches modernes centrées sur l’automatisation, le cloud et la plateforme.
 
