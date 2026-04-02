@@ -1,8 +1,8 @@
 ---
-title: The IT Knowledge Hub : De l'Atome au Cloud
+title: Accueil
 description: 
 published: true
-date: 2026-04-02T12:12:36.328Z
+date: 2026-04-02T12:13:42.829Z
 tags: accueil
 editor: markdown
 dateCreated: 2025-12-16T08:17:02.343Z
