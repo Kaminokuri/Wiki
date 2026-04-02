@@ -1,8 +1,8 @@
 ---
-title: Genèse et Science de l'Information
+title: Fondamentaux et Histoire
 description: 
 published: true
-date: 2026-04-02T12:09:30.699Z
+date: 2026-04-02T12:13:10.776Z
 tags: 
 editor: markdown
 dateCreated: 2026-04-02T12:09:30.699Z
