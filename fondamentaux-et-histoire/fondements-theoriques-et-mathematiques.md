@@ -2,8 +2,8 @@
 title: Fondements Théoriques et Mathématiques
 description: L'abstraction scientifique derrière le bit : Logique, Calculabilité et Information.
 published: true
-date: 2026-04-02T12:20:37.910Z
-tags: mathématique, binaire, algorithmique
+date: 2026-04-02T12:21:16.954Z
+tags: algorithmique, binaire, mathématique
 editor: markdown
 dateCreated: 2026-04-02T12:20:37.910Z
 ---
@@ -35,8 +35,6 @@ Bienvenue dans le "moteur de rendu" de l'informatique. Avant d'être une machine
 -----
 
 ## 🧠 Pourquoi ce socle est vital pour un Manager Cyber ?
-
-Pour un expert **Bac+5**, ces théories ne sont pas de lointains souvenirs d'école, mais des outils de diagnostic quotidien :
 
   * **En Cryptographie** : La théorie de Shannon définit la sécurité "parfaite" (One-Time Pad). Sans elle, pas de chiffrement moderne.
   * **En Architecture Cloud/Infra** : La représentation des données (Endianness) est la cause n°1 des bugs lors de la migration de données entre processeurs d'architectures différentes (x86 vs ARM).
