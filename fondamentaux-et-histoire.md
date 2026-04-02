@@ -2,7 +2,7 @@
 title: Fondamentaux et Histoire
 description: 
 published: true
-date: 2026-04-02T12:23:40.206Z
+date: 2026-04-02T12:24:01.838Z
 tags: 
 editor: markdown
 dateCreated: 2026-04-02T12:09:30.699Z
@@ -28,7 +28,7 @@ Cette section explore les racines de notre métier. Avant d'être une affaire de
 
 | Sous-Section | Focus Principal |
 | :--- | :--- |
-| **01. [**Théorie & Maths**](fondamentaux-et-histoire/fondements-theoriques-et-mathematiques/)** | Le binaire, Shannon, Turing et la représentation des données. |
+| **01. [**Théorie & Maths**](/fondamentaux-et-histoire/fondements-theoriques-et-mathematiques/)** | Le binaire, Shannon, Turing et la représentation des données. |
 | **02. Hardware (Générations)** | De la mécanique aux microprocesseurs (Loi de Moore). |
 | **03. Géants & OS** | L'ascension de Microsoft, Apple, Linux et l'héritage d'Unix. |
 | **04. Réseaux & Internet** | D'ARPANET au Web 3.0, l'histoire de la connectivité. |
