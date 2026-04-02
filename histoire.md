@@ -2,7 +2,7 @@
 title: Histoire de l'informatique
 description: 
 published: true
-date: 2026-03-16T14:37:31.577Z
+date: 2026-04-02T06:49:57.732Z
 tags: histoire
 editor: markdown
 dateCreated: 2026-03-12T20:14:13.367Z
@@ -42,8 +42,6 @@ Dans cette partie, vous allez découvrir :
 
 Cette partie propose une vue chronologique des grands moments de l’histoire de l’informatique, depuis les origines du calcul jusqu’aux environnements modernes fondés sur le cloud, les conteneurs et l’IA.
 
-Contenu :
-
 - [Avant l’informatique moderne](./grandes-periodes/avant-linformatique-moderne.md)
 - [Naissance des ordinateurs](./grandes-periodes/naissance-des-ordinateurs.md)
 - [Ère des mainframes](./grandes-periodes/ere-des-mainframes.md)
@@ -52,17 +50,17 @@ Contenu :
 - [Essor du web](./grandes-periodes/essor-du-web.md)
 - [Virtualisation et cloud](./grandes-periodes/virtualisation-et-cloud.md)
 - [Ère des conteneurs et de l’IA](./grandes-periodes/ere-des-conteneurs-et-de-lia.md)
+{.links-list}
 
 ### [Matériel et architectures](./materiel-et-architectures/index.md)
 
 Cette partie s’intéresse à l’évolution des composants et des architectures qui ont rendu possible le développement de l’informatique moderne : processeurs, mémoire, stockage et mécanismes d’amorçage.
 
-Contenu :
-
 - [Évolution des processeurs](./materiel-et-architectures/evolution-des-processeurs.md)
 - [Évolution de la mémoire](./materiel-et-architectures/evolution-de-la-memoire.md)
 - [Évolution du stockage](./materiel-et-architectures/evolution-du-stockage.md)
 - [Du BIOS à l’UEFI](./materiel-et-architectures/du-bios-a-luefi.md)
+{.links-list}
 
 ### [Systèmes d’exploitation](./systemes-dexploitation/index.md)
 
@@ -80,13 +78,12 @@ Contenu :
 
 Cette partie présente la naissance des réseaux informatiques, l’émergence d’ARPANET, la construction d’Internet, l’évolution des protocoles et les transformations des réseaux modernes.
 
-Contenu :
-
 - [Origines des réseaux](./reseaux/origines-des-reseaux.md)
 - [ARPANET et naissance d’Internet](./reseaux/arpnet-et-naissance-dinternet.md)
 - [Évolution des protocoles](./reseaux/evolution-des-protocoles.md)
 - [Naissance du web](./reseaux/naissance-du-web.md)
 - [Évolution des réseaux modernes](./reseaux/evolution-des-reseaux-modernes.md)
+{.links-list}
 
 ## Parcours conseillé
 
