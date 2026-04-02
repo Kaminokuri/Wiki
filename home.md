@@ -2,7 +2,7 @@
 title: 🌐 The IT Knowledge Hub : De l'Atome au Cloud
 description: 
 published: true
-date: 2026-04-02T09:58:08.822Z
+date: 2026-04-02T12:10:32.337Z
 tags: accueil
 editor: markdown
 dateCreated: 2025-12-16T08:17:02.343Z
@@ -28,7 +28,7 @@ Ce Wiki repose sur trois piliers fondamentaux :
 
 | Section | Domaine | Description |
 | :--- | :--- | :--- |
-| **00** | [**Fondamentaux & Histoire**](https://www.google.com/search?q=/00-fondamentaux-et-histoire) | Des bases de Boole à l'épopée des géants de l'IT. |
+| **00** | [**Fondamentaux & Histoire**](/fondamentaux-et-histoire) | Des bases de Boole à l'épopée des géants de l'IT. |
 | **01** | [**Architecture Hardware**](https://www.google.com/search?q=/01-architecture-materielle-hardware) | Comprendre le silicium, les CPU et le stockage moderne. |
 | **02** | [**Systèmes d'Exploitation**](https://www.google.com/search?q=/02-systemes-d-exploitation-os) | Maîtrise des noyaux Linux, Windows Server et Unix. |
 | **03** | [**Ingénierie Réseaux**](https://www.google.com/search?q=/03-ingenierie-reseaux) | L'art de l'interconnexion, du switching au BGP. |
