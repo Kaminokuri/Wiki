@@ -2,7 +2,7 @@
 title: Fondements Théoriques et Mathématiques
 description: L'abstraction scientifique derrière le bit : Logique, Calculabilité et Information.
 published: true
-date: 2026-04-02T12:21:16.954Z
+date: 2026-04-02T13:43:57.174Z
 tags: algorithmique, binaire, mathématique
 editor: markdown
 dateCreated: 2026-04-02T12:20:37.910Z
@@ -28,7 +28,7 @@ Bienvenue dans le "moteur de rendu" de l'informatique. Avant d'être une machine
 ## 📂 Sommaire des Pages
 
 1.  [**L'Algèbre de Boole (1854)**](https://www.google.com/search?q=./algebre-de-boole-1854) : La fondation de la logique binaire et des circuits.
-2.  [**La Machine de Turing (1936)**](https://www.google.com/search?q=./machine-de-turing-1936) : Le modèle théorique de l'ordinateur universel et la calculabilité.
+2.  [**La Machine de Turing (1936)**](/fondamentaux-et-histoire/fondements-theoriques-et-mathematiques/machine-de-turing-1936.md) : Le modèle théorique de l'ordinateur universel et la calculabilité.
 3.  [**Théorie de l'Information de Shannon (1948)**](https://www.google.com/search?q=./theorie-de-shannon-1948) : La naissance du "bit", la compression et la gestion du bruit.
 4.  [**Représentation des Données**](https://www.google.com/search?q=./representation-donnees) : Focus technique sur l'encodage (ASCII/UTF-8), le petit/grand boutisme (Endianness) et les nombres flottants.
 
